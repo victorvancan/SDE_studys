@@ -5,6 +5,7 @@ public class testando_IF {
         System.out.println("Testando condicionais");
 
         int idade = 17;
+        int quantidadePessoas = 3;
 
         if (idade >= 18)
         {
@@ -12,8 +13,16 @@ public class testando_IF {
             System.out.println("Seja bem vindo");
         }
         else
-        {
-            System.out.println("infelizmente vc nao pode entrar");
+        {   if(quantidadePessoas >= 2)
+            {
+                System.out.println("Voce nao tem 18, mas pode entrar "+"pois esta acompanhado");
+            }
+            else
+            {
+                System.out.println("infelizmente vc nao pode entrar");
+            }
+
+
         }
     }
 }
