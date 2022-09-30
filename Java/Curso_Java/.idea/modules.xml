@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/ByteBankEncapsulado/ByteBankEncapsulado.iml" filepath="$PROJECT_DIR$/ByteBankEncapsulado/ByteBankEncapsulado.iml" />
       <module fileurl="file://$PROJECT_DIR$/Curso_Java.iml" filepath="$PROJECT_DIR$/Curso_Java.iml" />
     </modules>
   </component>
