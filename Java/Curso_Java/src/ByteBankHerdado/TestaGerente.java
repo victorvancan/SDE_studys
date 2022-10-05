@@ -14,5 +14,10 @@ public class TestaGerente {
 
         System.out.println(aunteticado);
         System.out.println(g1.getBonificacao());
+
+        ControleBonificacao controle = new ControleBonificacao();
+        controle.registra(g1);
+
+        System.out.println(controle.getSoma());
     }
 }
