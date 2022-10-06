@@ -1,6 +1,6 @@
 package ByteBankHerdado;
 
-public class Cliente {
+public class Cliente implements Autenticavel {
     private String nome;
     private String CPf;
     private String profissao;
@@ -27,5 +27,23 @@ public class Cliente {
 
     public void setProfissao(String profissao) {
         this.profissao = profissao;
+    }
+
+    private int senha;
+    @Override
+    public void setSenha(int senha) {
+        this.senha = senha;
+    }
+
+    @Override
+    public boolean autentica(int senha) {
+        if(this.senha == senha)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

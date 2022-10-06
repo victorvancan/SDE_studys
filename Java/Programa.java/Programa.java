@@ -1,9 +1,1 @@
-
-public class Ola_Mundo
-{
-	public static void main(String[] args)
-	{
-		System.out.println("Ola mundo");
-	}
-	
-}
+ssh-keygen -t ed25519 -C "victorvancan1@gmail.com"

@@ -1,9 +1,10 @@
 package ByteBankHerdado;
 
-public class Gerente extends Funcionario implements Autenticavel {
+public class Administrador extends Funcionario implements Autenticavel{
 
-    public double getBonificacao(){
-        return super.getSalario() ;
+    @Override
+    public double getBonificacao() {
+        return 50;
     }
 
     private int senha;
