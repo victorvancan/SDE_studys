@@ -5,8 +5,11 @@ public class Cliente implements Autenticavel {
     private String CPf;
     private String profissao;
 
-    public String getNome() {
-        return nome;
+    private AutenticacaoUtil autenticador;
+
+    public Cliente()
+    {
+        this.autenticador = new AutenticacaoUtil();
     }
 
     public void setNome(String nome) {
@@ -29,21 +32,12 @@ public class Cliente implements Autenticavel {
         this.profissao = profissao;
     }
 
-    private int senha;
-    @Override
-    public void setSenha(int senha) {
-        this.senha = senha;
+    @Override public void setSenha(int senha) {
+        this.autenticador.setSenha(senha);
     }
 
     @Override
     public boolean autentica(int senha) {
-        if(this.senha == senha)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return autenticador.autentica(senha);
     }
 }
