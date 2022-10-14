@@ -16,34 +16,22 @@ public abstract class Conta {
     }
     public abstract void deposita(double valor);
 
-    public boolean saca(double valor)
+    public void saca(double valor)
     {
-        if(saldo >= valor)
+        if(saldo <= valor)
         {
-            this.saldo -= valor;
-            return true;
+            throw new SaldoInsuficienteException("saldo insuficiente " + this.saldo + "\nValor a sacar: " + valor);
         }
-        else
-        {
-            System.out.println("Valor insuficiente para saque");
-            return false;
-        }
+
+        this.saldo -= valor;
+
     }
 
-    public boolean transfere(double valor, Conta Destino)
+    public void transfere(double valor, Conta Destino)
     {
-        if(saldo >= valor)
-        {
-            saca(valor);
-            Destino.deposita(valor);
-            System.out.println("Valor tranferido");
-            return true;
-        }
-        else
-        {
-            System.out.println("Valor insuficiente para tranferencia");
-            return false;
-        }
+        this.saca(valor);
+        Destino.deposita(valor);
+
     }
 
     public double getSaldo()
