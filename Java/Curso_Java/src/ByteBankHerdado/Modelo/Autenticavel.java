@@ -1,4 +1,4 @@
-package ByteBankHerdado;
+package ByteBankHerdado.Modelo;
 
 public abstract interface Autenticavel {
 

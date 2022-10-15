@@ -1,4 +1,8 @@
-package ByteBankHerdado;
+package ByteBankHerdado.Testes;
+
+import ByteBankHerdado.Modelo.CalculadorImposto;
+import ByteBankHerdado.Modelo.ContaCorrente;
+import ByteBankHerdado.Modelo.SeguroDeVida;
 
 public class TesteTributaveis {
 

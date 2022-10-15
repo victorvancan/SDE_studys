@@ -1,4 +1,4 @@
-package ByteBankHerdado;
+package ByteBankHerdado.Testes;
 
 public class TestaSistema {
 

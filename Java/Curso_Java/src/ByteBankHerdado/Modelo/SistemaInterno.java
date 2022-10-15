@@ -1,4 +1,4 @@
-package ByteBankHerdado;
+package ByteBankHerdado.Modelo;
 
 public class SistemaInterno {
     private int senha = 222;

@@ -1,4 +1,4 @@
-package ByteBankHerdado;
+package ByteBankHerdado.Modelo;
 
 public class SaldoInsuficienteException extends RuntimeException{
 

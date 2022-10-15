@@ -1,4 +1,7 @@
-package ByteBankHerdado;
+package ByteBankHerdado.Testes;
+
+import ByteBankHerdado.Modelo.ContaCorrente;
+import ByteBankHerdado.Modelo.ContaPoupanca;
 
 public class TesteConta {
 

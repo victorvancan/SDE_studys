@@ -1,4 +1,7 @@
-package ByteBankHerdado;
+package ByteBankHerdado.Testes;
+
+import ByteBankHerdado.Modelo.ControleBonificacao;
+import ByteBankHerdado.Modelo.Gerente;
 
 public class TestaGerente {
     public static void main(String[] args) {
