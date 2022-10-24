@@ -6,6 +6,7 @@ package br.com.ByteBankHerdado.Modelo;
 * Version 0.1
 * */
 public class Cliente implements Autenticavel {
+
     private String nome;
     private String CPf;
     private String profissao;
@@ -15,6 +16,10 @@ public class Cliente implements Autenticavel {
     public Cliente()
     {
         this.autenticador = new AutenticacaoUtil();
+    }
+
+    public String getNome() {
+        return nome;
     }
 
     public void setNome(String nome) {
