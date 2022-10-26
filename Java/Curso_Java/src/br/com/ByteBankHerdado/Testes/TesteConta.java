@@ -2,10 +2,11 @@ package br.com.ByteBankHerdado.Testes;
 
 import br.com.ByteBankHerdado.Modelo.ContaCorrente;
 import br.com.ByteBankHerdado.Modelo.ContaPoupanca;
+import br.com.ByteBankHerdado.Modelo.SaldoInsuficienteException;
 
 public class TesteConta {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SaldoInsuficienteException {
         ContaCorrente cc = new ContaCorrente(111, 12);
         cc.deposita(100);
 

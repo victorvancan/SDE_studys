@@ -1,4 +1,5 @@
-package br.com.ByteBankHerdado.Modelo;
+package br.com.JavaIo;
+
 
 import java.io.Serializable;
 
@@ -8,18 +9,14 @@ import java.io.Serializable;
 * @author Victor Vancan
 * Version 0.1
 * */
-public class Cliente implements Autenticavel {
+
+public class Cliente implements  Serializable {
 
     private String nome;
     private String CPf;
     private String profissao;
+    private static final long serialVersionUID = 1L;
 
-    private AutenticacaoUtil autenticador;
-
-    public Cliente()
-    {
-        this.autenticador = new AutenticacaoUtil();
-    }
 
     public String getNome() {
         return nome;
@@ -45,12 +42,4 @@ public class Cliente implements Autenticavel {
         this.profissao = profissao;
     }
 
-    @Override public void setSenha(int senha) {
-        this.autenticador.setSenha(senha);
-    }
-
-    @Override
-    public boolean autentica(int senha) {
-        return autenticador.autentica(senha);
-    }
 }

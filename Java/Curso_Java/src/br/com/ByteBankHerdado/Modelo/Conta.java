@@ -1,10 +1,12 @@
 package br.com.ByteBankHerdado.Modelo;
 
-public abstract class Conta extends Object implements Comparable<Conta> {
+import java.io.Serializable;
+
+public abstract class Conta extends Object implements Comparable<Conta>, Serializable {
     protected double saldo;
     private int agencia;
     private int numero;
-    private Cliente titular;
+    private transient Cliente titular;
     private  static int total;
 
     public Conta(int agencia, int numero)
@@ -16,8 +18,7 @@ public abstract class Conta extends Object implements Comparable<Conta> {
     }
     public abstract void deposita(double valor);
 
-    public void saca(double valor)
-    {
+    public void saca(double valor) throws SaldoInsuficienteException {
         if(saldo <= valor)
         {
             throw new SaldoInsuficienteException("saldo insuficiente " + this.saldo + "\nValor a sacar: " + valor);
@@ -27,8 +28,7 @@ public abstract class Conta extends Object implements Comparable<Conta> {
 
     }
 
-    public void transfere(double valor, Conta Destino)
-    {
+    public void transfere(double valor, Conta Destino) throws SaldoInsuficienteException {
         this.saca(valor);
         Destino.deposita(valor);
 
