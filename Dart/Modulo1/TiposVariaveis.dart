@@ -1,10 +1,11 @@
 void main()
 {
-  int idade = 22;
-  double altura = 780e7;
+  var idade = 22;
+  // double altura = 780e7;
+  double altura = 1.80;
   bool compara = (altura == idade);
-  String nome = "Victor";
-  String apelido = "Çan";
+  const String nome = "Victor";
+  final apelido = "Çan";
   print(idade);
   print(altura);
   print(compara);
@@ -12,11 +13,11 @@ void main()
   print('Eu sou $apelido mas meu nome e $nome');
 
   List<String> listanomes = ['Ricaarth','Nathalia','Alex'];
-  List<dynamic> victor = ['Victor', 1.87, 22, compara];
+  List<dynamic> victor = [nome, altura, idade, compara];
   print(victor);
   print(listanomes[2]);
   print(listanomes[0]);
 
-  String frase = ''
+
   print(listanomes.reversed);
 }
