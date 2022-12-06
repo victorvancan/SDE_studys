@@ -2,21 +2,31 @@ import 'package:flutter/material.dart';
 
 import 'difficulty.dart';
 
-class Tasks extends StatefulWidget {
+class Task extends StatefulWidget {
   final String nome;
   final String foto;
   // ignore: non_constant_identifier_names
   final int Difficulty;
-  const Tasks(this.nome, this.foto, this.Difficulty, {Key? key})
+  Task(this.nome, this.foto, this.Difficulty, {Key? key})
       : super(key: key);
+  int nivel = 0;
 
   @override
-  State<Tasks> createState() => _TasksState();
+  State<Task> createState() => _TaskState();
 }
 
-class _TasksState extends State<Tasks> {
+class _TaskState extends State<Task> {
   
-  int nivel = 0;
+
+
+  bool assetOrNetwork()
+  {
+    if(widget.foto.contains('http'))
+      {
+        return false;
+      }
+    return true;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +62,8 @@ class _TasksState extends State<Tasks> {
                             borderRadius: BorderRadius.circular(4)),
                         child: ClipRRect(
                             borderRadius: BorderRadius.circular(4),
-                            child: Image.asset(widget.foto,
-                                fit: BoxFit.cover))),
+                            child: assetOrNetwork()? Image.asset(widget.foto,
+                                fit: BoxFit.cover) : Image.network(widget.foto, fit: BoxFit.cover),),),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -80,7 +90,7 @@ class _TasksState extends State<Tasks> {
                         child: ElevatedButton(
                           onPressed: () {
                             setState(() {
-                              nivel++;
+                              widget.nivel++;
                             });
                           },
                           child: Column(
@@ -112,7 +122,7 @@ class _TasksState extends State<Tasks> {
                       child: LinearProgressIndicator(
                         color: Colors.white,
                         value: (widget.Difficulty > 0)
-                            ? (nivel / widget.Difficulty) / 10
+                            ? (widget.nivel / widget.Difficulty) / 10
                             : 1,
                       ),
                     ),
@@ -120,7 +130,7 @@ class _TasksState extends State<Tasks> {
                   Padding(
                     padding: const EdgeInsets.all(12.0),
                     child: Text(
-                      'Nivel: $nivel',
+                      'Nivel: ${widget.nivel}',
                       style: const TextStyle(color: Colors.white, fontSize: 16),
                     ),
                   ),

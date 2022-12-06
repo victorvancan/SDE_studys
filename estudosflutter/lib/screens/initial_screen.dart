@@ -1,4 +1,5 @@
-import 'package:estudosflutter/screens/form_screem.dart';
+import 'package:estudosflutter/data/task_inherited.dart';
+import 'package:estudosflutter/screens/form_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../components/task.dart';
@@ -19,25 +20,14 @@ class _InitialScreenState extends State<InitialScreen> {
         leading: Container(),
       ),
       body: ListView(
-        children: const [
-          Padding(
-            padding: EdgeInsets.only(top: 8),
-            child: Tasks('Estudar Flutter', 'assets/images/dash.png', 4),
-          ),
-          Tasks('Andar de Bike', 'assets/images/bike.webp', 2),
-          Tasks('Ler', 'assets/images/ler.jpg', 3),
-          Tasks('Meditar', 'assets/images/meditar.jpeg', 1),
-          Tasks('Jogar', 'assets/images/jogar.jpg', 1),
-          SizedBox(
-            height: 80,
-          ),
-        ],
+        children: TaskInherited.of(context).taskList,
+        padding: EdgeInsets.only(top: 8, bottom: 70),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => FormScreen()),
+            MaterialPageRoute(builder: (contextnew) => FormScreen(taskContext: context,)),
           );
         },
         child: const Icon(Icons.add),
