@@ -1,7 +1,10 @@
+import 'package:estudosflutter/components/task.dart';
 import 'package:estudosflutter/data/task_inherited.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
+
+import '../data/task_dao.dart';
 
 class FormScreen extends StatefulWidget {
   const FormScreen({super.key, required this.taskContext});
@@ -19,24 +22,18 @@ class _FormScreenState extends State<FormScreen> {
 
   final _formKey = GlobalKey<FormState>();
 
-  bool valueValidator(String? value)
-  {
-    if(value != null && value.isEmpty)
-      {
-        return true;
-      }
+  bool valueValidator(String? value) {
+    if (value != null && value.isEmpty) {
+      return true;
+    }
     return false;
   }
 
-  bool difficultyValidator(String? value)
-  {
-    if(value != null && value.isEmpty)
-    {
-      if(int.parse(value) > 5 ||
-          int.parse(value) < 1 )
-        {
-          return true;
-        }
+  bool difficultyValidator(String? value) {
+    if (value != null && value.isEmpty) {
+      if (int.parse(value) > 5 || int.parse(value) < 1) {
+        return true;
+      }
     }
     return false;
   }
@@ -151,7 +148,10 @@ class _FormScreenState extends State<FormScreen> {
                         // print(nameController.text);
                         // print(int.parse(difficultyController.text));
                         // print(imageController.text);
-                        TaskInherited.of(widget.taskContext).newTask(nameController.text, imageController.text, int.parse(difficultyController.text));
+                        TaskDao().save(Task(
+                            nameController.text,
+                            imageController.text,
+                            int.parse(difficultyController.text)));
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text('Salvando nova Tarefa')),
                         );

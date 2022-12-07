@@ -1,3 +1,6 @@
+import 'package:estudosflutter/components/show_dialog.dart';
+import 'package:estudosflutter/data/task_dao.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'difficulty.dart';
@@ -7,8 +10,7 @@ class Task extends StatefulWidget {
   final String foto;
   // ignore: non_constant_identifier_names
   final int Difficulty;
-  Task(this.nome, this.foto, this.Difficulty, {Key? key})
-      : super(key: key);
+  Task(this.nome, this.foto, this.Difficulty, {Key? key}) : super(key: key);
   int nivel = 0;
 
   @override
@@ -16,15 +18,10 @@ class Task extends StatefulWidget {
 }
 
 class _TaskState extends State<Task> {
-  
-
-
-  bool assetOrNetwork()
-  {
-    if(widget.foto.contains('http'))
-      {
-        return false;
-      }
+  bool assetOrNetwork() {
+    if (widget.foto.contains('http')) {
+      return false;
+    }
     return true;
   }
 
@@ -55,15 +52,18 @@ class _TaskState extends State<Task> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                        width: 72,
-                        height: 100,
-                        decoration: BoxDecoration(
-                            color: Colors.black26,
-                            borderRadius: BorderRadius.circular(4)),
-                        child: ClipRRect(
-                            borderRadius: BorderRadius.circular(4),
-                            child: assetOrNetwork()? Image.asset(widget.foto,
-                                fit: BoxFit.cover) : Image.network(widget.foto, fit: BoxFit.cover),),),
+                      width: 72,
+                      height: 100,
+                      decoration: BoxDecoration(
+                          color: Colors.black26,
+                          borderRadius: BorderRadius.circular(4)),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(4),
+                        child: assetOrNetwork()
+                            ? Image.asset(widget.foto, fit: BoxFit.cover)
+                            : Image.network(widget.foto, fit: BoxFit.cover),
+                      ),
+                    ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,8 +73,7 @@ class _TaskState extends State<Task> {
                           child: Text(
                             widget.nome,
                             style: const TextStyle(
-                                fontSize: 24,
-                                overflow: TextOverflow.ellipsis),
+                                fontSize: 24, overflow: TextOverflow.ellipsis),
                           ),
                         ),
                         Difficulty(
@@ -88,6 +87,16 @@ class _TaskState extends State<Task> {
                         height: 52,
                         width: 52,
                         child: ElevatedButton(
+                          onLongPress: (() {
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return ShowDialog(
+                                      'Deletar',
+                                      'Tem certeza que deseja deletar essa tarefa ?',
+                                      widget.nome);
+                                });
+                          }),
                           onPressed: () {
                             setState(() {
                               widget.nivel++;
