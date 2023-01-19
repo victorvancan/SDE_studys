@@ -13,7 +13,7 @@ public class Banco {
 		Empresa empresa2 = new Empresa();
 		empresa2.setNome("Google");
 		lista.add(empresa);
-		lista.add(empresa2);
+		lista.add(empresa2); 
 	}
 	
 	public void adiciona(Empresa empresa) {
