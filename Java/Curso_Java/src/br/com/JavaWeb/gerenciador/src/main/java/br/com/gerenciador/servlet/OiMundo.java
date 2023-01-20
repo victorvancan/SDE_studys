@@ -13,6 +13,11 @@ public class OiMundo extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
+	public OiMundo() {
+		System.out.println("Criando servlet");
+	}
+	
+	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		
