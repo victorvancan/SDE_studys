@@ -8,14 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.gerenciador.acao.Acao;
-import br.com.gerenciador.acao.AlteraEmpresa;
-import br.com.gerenciador.acao.ListarEmpresas;
-import br.com.gerenciador.acao.MostrarEmpresas;
-import br.com.gerenciador.acao.NovaEmpresa;
-import br.com.gerenciador.acao.NovaEmpresaForm;
-import br.com.gerenciador.acao.RemoveEmpresa;
 
 
 @WebServlet(name = "entrada", urlPatterns = { "/entrada" })
@@ -26,11 +21,24 @@ public class unicaEntradaServlet extends HttpServlet {
 		
 		String paramAcao = request.getParameter("acao");
 		
+		HttpSession sessao = request.getSession();
+		boolean usuarioEstaLogado = (sessao.getAttribute("usuarioLogado") == null); 
+		boolean ehUmaAcaoProtegida = !(paramAcao.equals("Login") || paramAcao.equals("LoginForm"));
+		
+		
+		if(usuarioEstaLogado && ehUmaAcaoProtegida)
+		{
+			response.sendRedirect("entrada?acao=LoginForm");
+			return;
+		}
+		
+		
 		String nome;
 		
 		String nomeDaClasse ="br.com.gerenciador.acao." + paramAcao;
 		try {
-		Class classe = Class.forName(nomeDaClasse);
+		Class<?> classe = Class.forName(nomeDaClasse);
+		@SuppressWarnings("deprecation")
 		Acao acao = (Acao) classe.newInstance();
 		nome = acao.executa(request, response);
 		}
