@@ -27,7 +27,7 @@ public class ListarEmpresas implements Acao{
 		List<Empresa> lista = banco.getEmpresas();
 		
 		request.setAttribute("empresas", lista);
-		
+
 		return "forward: listaEmpresas.jsp";
 	}
 
