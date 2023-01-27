@@ -1,4 +1,4 @@
-package br.com.alura.cliente;
+package br.com.cliente;
 
 import org.apache.http.client.fluent.Request;
 
