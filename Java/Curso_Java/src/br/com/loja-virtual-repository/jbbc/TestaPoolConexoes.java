@@ -1,3 +1,5 @@
+package jbbc;
+
 import java.sql.SQLException;
 import java.util.Iterator;
 
