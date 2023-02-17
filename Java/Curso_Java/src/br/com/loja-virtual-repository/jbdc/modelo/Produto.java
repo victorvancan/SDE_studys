@@ -1,8 +1,9 @@
-package jbbc.modelo;
+package jbdc.modelo;
 
 public class Produto {
 
 	private Integer id;
+
 	private String nome;
 	private String descricao;
 
@@ -29,11 +30,21 @@ public class Produto {
 	public String getDescricao() {
 		return descricao;
 	}
+	
+	public Integer getId() {
+		return id;
+	}
 
 	@Override
 	public String toString() {
 		return String.format("O produto é: %d, %s, %s", 
 				this.id, this.nome, this.descricao);
 	}
+
+	public void setCategoriaId(Integer id2) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }
 

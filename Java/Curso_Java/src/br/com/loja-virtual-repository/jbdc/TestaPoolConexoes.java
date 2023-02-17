@@ -1,17 +1,17 @@
-package jbbc;
+package jbdc;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 
-public class TesteConexao {
-
+public class TestaPoolConexoes {
+	
 	public static void main(String[] args) throws SQLException {
 		
 		ConnectionFactory connectionFactory = new ConnectionFactory();
 		
-		Connection con = connectionFactory.recuperarConexao();
-		
-		con.close();
+		for (int i = 0; i < 20; i++) {
+			connectionFactory.recuperarConexao();
+			System.out.println("Conexao: " +i );
+		}
 	}
 
 }

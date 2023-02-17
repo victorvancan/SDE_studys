@@ -2,9 +2,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-import jbbc.ConnectionFactory;
-import jbbc.dao.ProdutoDAO;
-import jbbc.modelo.Produto;
+import jbdc.ConnectionFactory;
+import jbdc.dao.ProdutoDAO;
+import jbdc.modelo.Produto;
 
 public class TestaInsercaoEListagemComProduto {
 	public static void main(String[] args) throws SQLException {
