@@ -3,24 +3,27 @@ package br.com.loja.teste;
 import java.math.BigDecimal;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
+import br.com.loja.dao.CategoriaDao;
+import br.com.loja.dao.ProdutoDao;
+import br.com.loja.modelo.Categoria;
 import br.com.loja.modelo.Produto;
+import br.com.loja.util.JPAUtil;
 
 public class CadastroDeProduto {
 	public static void main(String[] args) {
-		Produto celular = new Produto();
+		Categoria celualres = new Categoria("Celulares");
+		Produto celular = new Produto("Xiaomi Redmi","Muito legal",new BigDecimal("800"), celualres);
 
-		celular.setNome("Xiaomi Redmi");
-		celular.setDescricao("Muito legal");
-		celular.setPreco(new BigDecimal("800"));
-
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("loja");
-		EntityManager em = factory.createEntityManager();
+		EntityManager em = JPAUtil.getEntityManager();
+		
+		ProdutoDao produtoDao = new ProdutoDao(em);
+		CategoriaDao catergoriaDao = new CategoriaDao(em);
+		
 		
 		em.getTransaction().begin();
-		em.persist(celular);
+		catergoriaDao.cadastrar(celualres);
+		produtoDao.cadastrar(celular);
 		em.getTransaction().commit();
 		em.close();
 	}
