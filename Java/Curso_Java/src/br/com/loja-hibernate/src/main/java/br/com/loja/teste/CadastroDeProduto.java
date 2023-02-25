@@ -24,7 +24,7 @@ public class CadastroDeProduto {
 		
 		List<Produto> todos = produtoDao.buscarTodos();
 		todos.forEach(produto -> System.out.println(p.getNome()));
-		
+
 	}
 
 	private static void cadastrarProduto() {
