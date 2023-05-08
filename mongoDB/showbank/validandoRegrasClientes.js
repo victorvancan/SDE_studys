@@ -1,13 +1,13 @@
 let clientes = {
-       $jsonSchema: {
+   $jsonSchema: {
       bsonType: "object",
-       "additionalProperties": false,
-      required: ["_id", "nome", "cpf",  "status_civil", "data_nascimento", "endereco","genero", "profissao" ],
+      "additionalProperties": false,
+      required: ["_id", "nome", "cpf", "status_civil", "data_nascimento", "endereco", "genero", "profissao"],
       properties: {
-            _id:{
-              bsonType: "objectId",
-              description: "informe corretamente o endereço do cliente" 
-          },
+         _id: {
+            bsonType: "objectId",
+            description: "informe corretamente o endereço do cliente"
+         },
          nome: {
             bsonType: "string",
             maxLength: 150,
@@ -20,7 +20,7 @@ let clientes = {
             description: "informe corretamente o cpf do cliente"
          },
          status_civil: {
-            enum: [ "Solteiro(a)", "Casado(a)", "Separado(a)", "Divorciado(a)", "Viúvo(a)" ],
+            enum: ["Solteiro(a)", "Casado(a)", "Separado(a)", "Divorciado(a)", "Viúvo(a)"],
             description: "informe corretamente o status civil do cliente"
          },
          data_nascimento: {
@@ -30,16 +30,16 @@ let clientes = {
          endereco: {
             bsonType: "string",
             description: "informe corretamente o endereço do cliente"
-                },
-         genero:{
-              bsonType: "string",
-              description: "informe corretamente o genero do cliente" 
-          },
-         profissao:{
-              bsonType: "string",
-              description: "informe corretamente o profissão do cliente" 
-          }
-            }
-        }
-    
+         },
+         genero: {
+            bsonType: "string",
+            description: "informe corretamente o genero do cliente"
+         },
+         profissao: {
+            bsonType: "string",
+            description: "informe corretamente o profissão do cliente"
+         }
+      }
+   }
+
 }
